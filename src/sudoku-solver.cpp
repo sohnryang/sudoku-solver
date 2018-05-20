@@ -18,7 +18,7 @@ void generate_candidates() {
         int mask = (1 << 9) - 1; // 0b111111111
         for (int x = 0; x < 9; ++x)
             if (board[y][x] != 0)
-                mask &= (1 << (board[y][x] - 1));
+                mask &= ~(1 << (board[y][x] - 1));
         for (int x = 0; x < 9; ++x) {
             if (board[y][x] == 0) cand[y][x] &= (~mask);
             else cand[y][x] = 0;
@@ -30,7 +30,7 @@ void generate_candidates() {
         int mask = (1 << 9) - 1; // 0b111111111
         for (int y = 0; y < 9; ++y)
             if (board[y][x] != 0)
-                mask &= (1 << (board[y][x] - 1));
+                mask &= ~(1 << (board[y][x] - 1));
         for (int y = 0; y < 9; ++y) {
             if (board[y][x] == 0) cand[y][x] &= (~mask);
             else cand[y][x] = 0;
@@ -49,7 +49,7 @@ void generate_candidates() {
         for (int j = pos[0]; j < pos[0] + 3; ++j) {
             for (int k = pos[1]; k < pos[1] + 3; ++k)
                 if (board[j][k] != 0)
-                    mask &= (1 << (board[j][k] - 1));
+                    mask &= ~(1 << (board[j][k] - 1));
             for (int k = pos[1]; k < pos[1] + 3; ++k) {
 				if (board[j][k] == 0) cand[j][k] &= (~mask);
 				else cand[j][k] = 0;
