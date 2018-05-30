@@ -1,2 +1,2 @@
 # sudoku-solver
-sudoku solver written in C++
+sudoku solver written in JS
