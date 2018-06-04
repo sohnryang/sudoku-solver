@@ -12,25 +12,29 @@ let digits = '123456789'.split('');
 let rows = 'ABCDEFGHI'.split('');
 let cols = digits;
 let squares = cross(rows, cols);
+
 let unitlist = [...cols.map(c => cross(rows, c)),
                 ...rows.map(r => cross(r, cols))];
-for (rs in ['ABC', 'DEF', 'GHI']) {
-    for (cs in ['123', '456', '789']) {
-        unitlist.push(cross(rs, cs));
+let tmp = [];
+for (rs of ['ABC'.split(''), 'DEF'.split(''), 'GHI'.split('')]) {
+    for (cs of ['123'.split(''), '456'.split(''), '789'.split('')]) {
+        tmp.push(cross(rs, cs));
     }
 }
+unitlist.push(...tmp);
+
 let units = {};
 for (s of squares) {
+    let tmp = [];
     for (u of unitlist) {
-        if (u.includes(s)) units[s] = u;
+        if (u.includes(s)) tmp.push(u);
     }
+    units[s] = tmp;
 }
+
 let peers = {};
 for (s of squares) {
     let a = new Set([].concat.apply([], units[s]));
     let b = new Set([s]);
     peers[s] = new Set([...a].filter(x => !b.has(x)));
 }
-
-console.log(squares.length == 81);
-console.log(unitlist);
