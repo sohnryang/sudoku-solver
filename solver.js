@@ -38,3 +38,20 @@ for (s of squares) {
     let b = new Set([s]);
     peers[s] = new Set([...a].filter(x => !b.has(x)));
 }
+
+function grid_values(grid) {
+    let chars = grid.filter(c => digits.includes(c) || '0.'.includes(c));
+    console.assert(chars.length == 81, {'message': 'error'});
+    let result = {};
+    for (let i = 0; i < 81; ++i) result[squares[i]] = chars[i];
+    return result;
+}
+
+function parse_grid(grid) {
+    let values = {};
+    for (s of squares) {
+        values[s] = digits;
+    }
+    for (value of grid.entries()) {
+    }
+}
