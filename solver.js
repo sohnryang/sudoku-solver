@@ -52,6 +52,10 @@ function parse_grid(grid) {
     for (s of squares) {
         values[s] = digits;
     }
-    for (value of grid.entries()) {
+    for (value of grid_values(grid).entries()) {
+        let [s, d] = value;
+        if (digits.includes(d) && !assign(values, s, d))
+            return false;
     }
+    return values;
 }
