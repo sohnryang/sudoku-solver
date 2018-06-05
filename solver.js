@@ -39,6 +39,15 @@ for (s of squares) {
     peers[s] = new Set([...a].filter(x => !b.has(x)));
 }
 
+function assign(values, s, d) {
+    let other_values = values[s].replace(d, '');
+    let available = true;
+    for (d2 of other_values) {
+        available = available && eliminate(values, s, d2);
+    }
+    return available ? values : false;
+}
+
 function grid_values(grid) {
     let chars = grid.filter(c => digits.includes(c) || '0.'.includes(c));
     console.assert(chars.length == 81, 'invalid grid');
