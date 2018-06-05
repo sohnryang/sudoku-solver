@@ -41,7 +41,7 @@ for (s of squares) {
 
 function grid_values(grid) {
     let chars = grid.filter(c => digits.includes(c) || '0.'.includes(c));
-    console.assert(chars.length == 81, {'message': 'error'});
+    console.assert(chars.length == 81, 'invalid grid');
     let result = {};
     for (let i = 0; i < 81; ++i) result[squares[i]] = chars[i];
     return result;
