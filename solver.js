@@ -46,26 +46,27 @@ function eliminate(values, s, d) {
     else if (values[s].length == 1) {
         let d2 = values[s];
         let available = true;
-        for (s2 of peers[s]) available = available && eliminate(values, s2, d2);
+        for (s2 of peers[s]) available = available && eliminate(values, s2, d2) !== false;
         if (!available) return false;
     }
 
     for (u of units[s]) {
-        dplaces = u.filter(s => values[s].includes(d));
+        let dplaces = u.filter(s => values[s].includes(d));
         if (dplaces.length == 0) return false;
         else if (dplaces.length == 1)
             if (!assign(values, dplaces[0], d))
                 return false;
     }
+    return values;
 }
 
 function assign(values, s, d) {
     let other_values = values[s].join('').replace(d, '').split('');
     let available = true;
     for (d2 of other_values) {
-        available = available && eliminate(values, s, d2);
+        available = available && eliminate(values, s, d2) !== false;
     }
-    return available ? values : false;
+    return available !== false ? values : false;
 }
 
 function grid_values(grid) {
@@ -83,7 +84,7 @@ function parse_grid(grid) {
     }
     for (value of Object.entries(grid_values(grid))) {
         let [s, d] = value;
-        if (digits.includes(d) && !assign(values, s, d))
+        if (digits.includes(d) && assign(values, s, d) === false)
             return false;
     }
     return values;
@@ -103,11 +104,12 @@ function center(string, width, padding) {
 }
 
 function display(values) {
+    console.log(values);
     let width = 1 + Math.max(...squares.map(s => values[s].length));
     let line = Array(3).fill(['-'.repeat(width * 3)]).join('+');
     for (r of rows) {
         for (c of cols) {
-            console.log(cols.map(c => center(values[r + c], width) + ('36'.includes(c) ? '|' : '').join('')));
+            console.log((center(values[r + c], width) + ('36'.includes(c) ? '|' : '')));
             if ('CF'.includes(r)) console.log(line);
         }
     }
