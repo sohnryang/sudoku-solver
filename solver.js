@@ -66,7 +66,7 @@ function assign(values, s, d) {
     for (d2 of other_values) {
         available = available && eliminate(values, s, d2) !== false;
     }
-    return available !== false ? values : false;
+    return available ? values : false;
 }
 
 function grid_values(grid) {
