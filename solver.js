@@ -91,16 +91,16 @@ function parse_grid(grid) {
 }
 
 function center(string, width, padding) {
-	padding = padding || " ";
-	padding = padding.substr( 0, 1 );
-	if (string.length < width) {
-		let len	= width - string.length;
-		let remain = (len % 2 == 0) ? "" : padding;
-		let pads = padding.repeat(parseInt(len / 2));
-		return pads + string + pads + remain;
-	}
-	else
-		return string;
+    padding = padding || " ";
+    padding = padding.substr( 0, 1 );
+    if (string.length < width) {
+        let len = width - string.length;
+        let remain = (len % 2 == 0) ? "" : padding;
+        let pads = padding.repeat(parseInt(len / 2));
+        return pads + string + pads + remain;
+    }
+    else
+        return string;
 }
 
 function display(values) {
