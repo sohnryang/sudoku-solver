@@ -44,7 +44,7 @@ function eliminate(values, s, d) {
     values[s] = values[s].join('').replace(d, '').split('');
     if (values[s].length == 0) return false;
     else if (values[s].length == 1) {
-        let d2 = values[s];
+        let d2 = values[s][0];
         let available = true;
         for (s2 of peers[s]) available = available && eliminate(values, s2, d2) !== false;
         if (!available) return false;
