@@ -105,14 +105,6 @@ function center(string, width, padding) {
 
 function display(values) {
     console.log(values);
-    let width = 1 + Math.max(...squares.map(s => values[s].length));
-    let line = Array(3).fill(['-'.repeat(width * 3)]).join('+');
-    for (r of rows) {
-        for (c of cols) {
-            console.log((center(values[r + c], width) + ('36'.includes(c) ? '|' : '')));
-            if ('CF'.includes(r)) console.log(line);
-        }
-    }
 }
 
 let grid1 = '003020600900305001001806400008102900700000008006708200002609500800203009005010300'.split('');
