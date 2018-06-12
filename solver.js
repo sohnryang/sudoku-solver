@@ -1,5 +1,5 @@
 function cross(A, B) {
-    let result = []
+    let result = [];
     for (a of A) {
         for (b of B) {
             result.push(a + b);
@@ -90,9 +90,39 @@ function parse_grid(grid) {
     return values;
 }
 
+function solve(grid) {
+    return search(parse_grid(grid));
+}
+
+function some(seq) {
+    for (e of seq)
+        if (e) return e;
+    return false;
+
+function search(values) {
+    if (values == false) return false;
+    let all_len_is_1 = true;
+    for (s of squares) {
+        all_len_is_1 = all_len_is_1 && values[s] == 1;
+    }
+    if (all_len_is_1) return values;
+    let n = 9, s;
+    for (sq of squares) {
+        if (values[sq].length < n && values[sq].length > 1) {
+            n = values[sq];
+            s = sq;
+        }
+    }
+    let result = [];
+    for (d of values[s]) {
+        result.push(search(assign(Object.assign({}, values), s, d)));
+    }
+    return some(result);
+}
+
 function display(values) {
     console.log(values);
 }
 
-let grid1 = '003020600900305001001806400008102900700000008006708200002609500800203009005010300'.split('');
+let grid1 = '4.....8.5.3..........7......2.....6.....8.4......1.......6.3.7.5..2.....1.4......'.split('');
 display(parse_grid(grid1));
