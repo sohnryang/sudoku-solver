@@ -98,6 +98,7 @@ function some(seq) {
     for (e of seq)
         if (e) return e;
     return false;
+}
 
 function search(values) {
     if (values == false) return false;
