@@ -120,10 +120,3 @@ function search(values) {
     }
     return some(result);
 }
-
-function display(values) {
-    console.log(values);
-}
-
-let grid1 = '...92......68.3...19..7...623..4.1....1...7....8.3..297...8..91...5.72......64...'.split('');
-display(solve(grid1));
