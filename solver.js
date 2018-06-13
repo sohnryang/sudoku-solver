@@ -123,8 +123,6 @@ function search(values) {
 
 let button_elem = document.getElementById('solve_button');
 button_elem.addEventListener('click', () => {
-    let rows = 'ABCDEFGHI';
-    let cols = '123456789';
     let grid = '';
     for (let r of rows) {
         for (let c of cols) {
