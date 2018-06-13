@@ -128,7 +128,7 @@ button_elem.addEventListener('click', () => {
         for (let c of cols) {
             let cell = document.getElementById(r + c);
             let number = cell.value;
-            if (cell.value == '') grid += '0';
+            if (cell.value == '') grid += '.';
             else grid += cell.value;
         }
     }
