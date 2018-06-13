@@ -120,3 +120,24 @@ function search(values) {
     }
     return some(result);
 }
+
+let button_elem = document.getElementById('solve_button');
+button_elem.addEventListener('click', () => {
+    let rows = 'ABCDEFGHI';
+    let cols = '123456789';
+    let grid = '';
+    for (let r of rows) {
+        for (let c of cols) {
+            let cell = document.getElementById(r + c);
+            let number = cell.value;
+            if (cell.value == '') grid += '0';
+            else grid += cell.value;
+        }
+    }
+    let result = solve(grid);
+    for (let value of Object.entries(result)) {
+        let s, d = value;
+        let cell = document.getElementById(s);
+        cell.value = d[0];
+    }
+});
