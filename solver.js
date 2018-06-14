@@ -135,7 +135,7 @@ button_elem.addEventListener('click', () => {
     document.write(grid+'\n');
     let result = solve(grid.split(''));
     for (let value of Object.entries(result)) {
-        let s, d = value;
+        let [s, d] = value;
         document.write(s+': '+d[0]+'\n');
         let cell = document.getElementById(s);
         cell.value = d[0];
