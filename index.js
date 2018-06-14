@@ -1,6 +1,4 @@
 let grid_elem = document.getElementById('grid');
-let rows = 'ABCDEFGHI';
-let cols = '123456789';
 
 for (let r of rows) {
     let tr = document.createElement('tr');
