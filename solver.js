@@ -132,11 +132,11 @@ button_elem.addEventListener('click', () => {
             else grid += cell.value;
         }
     }
-    document.write(grid);
+    document.write(grid+'\n');
     let result = solve(grid.split(''));
-    document.write(result);
     for (let value of Object.entries(result)) {
         let s, d = value;
+        document.write(s+': '+d[0]+'\n');
         let cell = document.getElementById(s);
         cell.value = d[0];
     }
